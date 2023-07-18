@@ -2,6 +2,8 @@ import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:hospital/core/app_fonts.dart';
+import 'package:hospital/ui/check_code_page.dart';
+import 'package:hospital/ui/second_screen.dart';
 
 import '../core/common_widgets/app_button.dart';
 
@@ -91,10 +93,24 @@ class LoginScreen extends StatelessWidget {
               child: AppButton(
                 title: 'Далее',
                 onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SecondScreen(),
+                    ),
+                  );
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
                       content: Text(
-                        '${code.toString()}\n${controller.text}',
+                        code.toString(),
+                      ),
+                    ),
+                  );
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => CheckCodePage(
+                        code: code,
                       ),
                     ),
                   );

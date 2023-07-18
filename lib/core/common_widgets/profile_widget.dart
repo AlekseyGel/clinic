@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:hospital/core/app_fonts.dart';
 import 'package:hospital/models/profil_model.dart';
 
-import '../../resources/resources.dart';
-
 class ProfileWidget extends StatelessWidget {
   const ProfileWidget({super.key, required this.model});
 
