@@ -1,23 +1,43 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:hospital/core/app_fonts.dart';
 import 'package:hospital/ui/check_code_page.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../core/common_widgets/app_button.dart';
+import 'dart:math';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  String text = '';
+  final TextEditingController controller = TextEditingController();
+
+  @override
+  void initState() {
+    initPhone();
+    super.initState();
+  }
+
+  void initPhone() async {
+    final prefs = await SharedPreferences.getInstance();
+    text = prefs.getString('phone') ?? '';
+
+    setState(() {});
+  }
 
   @override
   Widget build(BuildContext context) {
     final int code = Random().nextInt(8999 + 1000);
-    final TextEditingController controller = TextEditingController();
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
-        title: Text(
+        title: const Text(
           'Вход',
           style: AppFonts.w600s17,
         ),
@@ -30,8 +50,6 @@ class LoginScreen extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        backgroundColor: Colors.white,
-        elevation: 1,
       ),
       body: Padding(
         padding: const EdgeInsets.symmetric(
@@ -90,33 +108,36 @@ class LoginScreen extends StatelessWidget {
             Spacer(),
             Center(
               child: AppButton(
-                title: 'Далее',
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => CheckCodePage(
-                        code: code,
+                  title: 'Далее',
+                  onPressed: () async {
+                    final prefs = await SharedPreferences.getInstance();
+                    prefs.setString('phone', controller.text);
+                    text = prefs.getString('pone') ?? '';
+
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CheckCodePage(
+                          code: code,
+                        ),
                       ),
-                    ),
-                  );
-                  ScaffoldMessenger.of(context).showSnackBar(
-                    SnackBar(
-                      content: Text(
-                        code.toString(),
+                    );
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text(
+                          code.toString(),
+                        ),
                       ),
-                    ),
-                  );
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(
-                      builder: (context) => CheckCodePage(
-                        code: code,
+                    );
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => CheckCodePage(
+                          code: code,
+                        ),
                       ),
-                    ),
-                  );
-                },
-              ),
+                    );
+                  }),
             ),
             const SizedBox(
               height: 20,

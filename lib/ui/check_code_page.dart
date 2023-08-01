@@ -23,8 +23,8 @@ class _CheckCodePageState extends State<CheckCodePage> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        elevation: 0.5,
-        backgroundColor: Colors.white,
+       
+        
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
@@ -42,7 +42,7 @@ class _CheckCodePageState extends State<CheckCodePage> {
         ),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(40.0),
+        padding: const EdgeInsets.all(20.0),
         child: Column(
           children: [
             const Text(
@@ -50,7 +50,7 @@ class _CheckCodePageState extends State<CheckCodePage> {
               style: AppFonts.w500s22,
             ),
             const SizedBox(
-              height: 140,
+              height: 120,
             ),
             TextField(
               onChanged: (value) {

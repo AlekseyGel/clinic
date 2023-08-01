@@ -38,6 +38,7 @@ dependencies:
   spider: ^4.2.1
   google_fonts: ^4.0.4
   flutter_native_splash: ^2.3.1
+  shared_preferences: ^2.2.0
 
 dev_dependencies:
   flutter_test:
