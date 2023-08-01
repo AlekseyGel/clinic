@@ -3,7 +3,6 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:hospital/core/app_fonts.dart';
 import 'package:hospital/ui/check_code_page.dart';
-import 'package:hospital/ui/second_screen.dart';
 
 import '../core/common_widgets/app_button.dart';
 
@@ -77,7 +76,7 @@ class LoginScreen extends StatelessWidget {
                     color: Colors.black,
                   ),
                 ),
-                hintText: '0 __________',
+                hintText: '+7 ... ... .. ..',
                 hintStyle: AppFonts.w700s17,
               ),
             ),
@@ -88,7 +87,7 @@ class LoginScreen extends StatelessWidget {
               'На указанный номер придет СМС-сообщение с кодом подтверждения',
               style: AppFonts.w400s15,
             ),
-            const Spacer(),
+            Spacer(),
             Center(
               child: AppButton(
                 title: 'Далее',
@@ -96,7 +95,9 @@ class LoginScreen extends StatelessWidget {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => const SecondScreen(),
+                      builder: (context) => CheckCodePage(
+                        code: code,
+                      ),
                     ),
                   );
                   ScaffoldMessenger.of(context).showSnackBar(

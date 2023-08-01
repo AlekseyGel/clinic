@@ -17,7 +17,7 @@ class ProfileWidget extends StatelessWidget {
         ),
         const SizedBox(width: 18),
         SizedBox(
-          width: MediaQuery.of(context).size.width * 0.77,
+          width: MediaQuery.of(context).size.width * 0.70,
           child: Text(
             model.text,
             style: AppFonts.w400s15,

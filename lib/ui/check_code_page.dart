@@ -12,6 +12,12 @@ class CheckCodePage extends StatefulWidget {
 }
 
 class _CheckCodePageState extends State<CheckCodePage> {
+  Function()? onPressed;
+
+  _CheckCodePageState() {
+    onPressed = null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +36,7 @@ class _CheckCodePageState extends State<CheckCodePage> {
             ),
           ),
         ),
-        title: Text(
+        title: const Text(
           'Подтверждение номера',
           style: AppFonts.w600s17,
         ),
@@ -43,22 +49,30 @@ class _CheckCodePageState extends State<CheckCodePage> {
               'Введите код из смс',
               style: AppFonts.w500s22,
             ),
-            SizedBox(
+            const SizedBox(
               height: 140,
             ),
             TextField(
+              onChanged: (value) {
+                if (value == widget.code.toString()) {
+                  onPressed = () {};
+                } else {
+                  onPressed = null;
+                }
+                setState(() {});
+              },
               textAlign: TextAlign.center,
               obscureText: true,
               obscuringCharacter: '*',
               maxLength: 4,
               decoration: InputDecoration(
-                prefixIcon: Text(
+                prefixIcon: const Text(
                   'Код',
                   style: AppFonts.w600s18,
                 ),
                 suffix: InkWell(
                   onTap: () {},
-                  child: CircleAvatar(
+                  child: const CircleAvatar(
                     backgroundColor: Colors.grey,
                     radius: 17.5,
                     child: Icon(
@@ -69,7 +83,7 @@ class _CheckCodePageState extends State<CheckCodePage> {
                 ),
               ),
             ),
-            SizedBox(
+            const SizedBox(
               height: 24,
             ),
             TextButton(
@@ -90,7 +104,7 @@ class _CheckCodePageState extends State<CheckCodePage> {
               ),
             ),
             const Spacer(),
-            AppButton(title: 'Далее', onPressed: () {}),
+            AppButton(title: 'Далее', onPressed: onPressed),
             const SizedBox(
               height: 20,
             ),
