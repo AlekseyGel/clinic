@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:hospital/ui/First_Screen.dart';
+import 'package:hospital/ui/doctors_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -13,11 +13,14 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       theme: ThemeData(
-        appBarTheme: AppBarTheme(backgroundColor: Colors.white, elevation: 0.5),
+        appBarTheme: AppBarTheme(
+            backgroundColor: Colors.white,
+            elevation: 0.5,
+            foregroundColor: Colors.black),
         textTheme: GoogleFonts.latoTextTheme().copyWith(),
       ),
       debugShowCheckedModeBanner: false,
-      home: FirstScreen(),
+      home: const DoctorPage(),
     );
   }
 }

@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:hospital/core/app_fonts.dart';
 import 'package:hospital/core/common_widgets/app_button.dart';
 
+
+
 class CheckCodePage extends StatefulWidget {
   const CheckCodePage({super.key, required this.code});
 
@@ -16,15 +18,13 @@ class _CheckCodePageState extends State<CheckCodePage> {
 
   _CheckCodePageState() {
     onPressed = null;
-  }
+      }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-       
-        
         leading: IconButton(
           onPressed: () {
             Navigator.pop(context);
